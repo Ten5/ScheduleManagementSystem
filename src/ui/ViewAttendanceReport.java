@@ -93,17 +93,7 @@ public class ViewAttendanceReport {
 		studentTable.setBackground(new Color(255, 255, 255));
 		scrollPane.setViewportView(studentTable);
 		studentTable.setModel(new DefaultTableModel(
-		new Object[][] {
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
+		new Object[][] {				
 		},
 		new String[] {
 				"Class Roll No", "University Roll No", "Name", "Status"
