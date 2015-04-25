@@ -7,10 +7,13 @@ import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.SwingConstants;
 
 public class AdminMenu {
 
-	private JFrame frame;
+	private JFrame frmMenu;
 
 	/**
 	 * Launch the application.
@@ -20,7 +23,7 @@ public class AdminMenu {
 			public void run() {
 				try {
 					AdminMenu window = new AdminMenu();
-					window.frame.setVisible(true);
+					window.frmMenu.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -39,29 +42,34 @@ public class AdminMenu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmMenu = new JFrame();
+		frmMenu.setResizable(false);
+		frmMenu.setTitle("Menu");
+		frmMenu.getContentPane().setBackground(new Color(255, 250, 250));
+		frmMenu.setBounds(100, 100, 450, 300);
+		frmMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMenu.getContentPane().setLayout(null);
 		
 		JLabel lblWelcomeAdmin = new JLabel("WELCOME ADMIN");
-		lblWelcomeAdmin.setBounds(155, 24, 127, 27);
-		frame.getContentPane().add(lblWelcomeAdmin);
+		lblWelcomeAdmin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcomeAdmin.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblWelcomeAdmin.setBounds(159, 29, 116, 23);
+		frmMenu.getContentPane().add(lblWelcomeAdmin);
 		
 		JButton btnAddupdatedeleteStudentDetails = new JButton("Add/Update/Delete Student Details");
-		btnAddupdatedeleteStudentDetails.setBounds(100, 76, 229, 23);
-		frame.getContentPane().add(btnAddupdatedeleteStudentDetails);
+		btnAddupdatedeleteStudentDetails.setBounds(102, 81, 229, 33);
+		frmMenu.getContentPane().add(btnAddupdatedeleteStudentDetails);
 		
 		JButton button = new JButton("Add/Update/Delete Teacher Details");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		button.setBounds(100, 124, 229, 23);
-		frame.getContentPane().add(button);
+		button.setBounds(102, 143, 229, 33);
+		frmMenu.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Add/Update/Delete Subject Details");
-		button_1.setBounds(100, 168, 229, 23);
-		frame.getContentPane().add(button_1);
+		button_1.setBounds(102, 205, 229, 33);
+		frmMenu.getContentPane().add(button_1);
 	}
 }

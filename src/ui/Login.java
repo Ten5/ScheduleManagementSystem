@@ -17,10 +17,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.Color;
 
 public class Login {
 
-	private JFrame frame;
+	private JFrame frmLogin;
 	private JTextField textField;
 	static Statement st;
 
@@ -50,7 +52,7 @@ public class Login {
 			public void run() {
 				try {
 					Login window = new Login();
-					window.frame.setVisible(true);
+					window.frmLogin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -69,26 +71,31 @@ public class Login {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.getContentPane().setLayout(null);
+		frmLogin = new JFrame();
+		frmLogin.setTitle("Login");
+		frmLogin.setResizable(false);
+		frmLogin.getContentPane().setBackground(new Color(255, 250, 250));
+		frmLogin.getContentPane().setLayout(null);
 		
-		JLabel lblName = new JLabel("NAME");
-		lblName.setBounds(65, 91, 46, 14);
-		frame.getContentPane().add(lblName);
+		JLabel lblName = new JLabel("NAME:");
+		lblName.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblName.setBounds(75, 82, 80, 22);
+		frmLogin.getContentPane().add(lblName);
 		
-		frame.setBounds(500, 500, 424, 260);
+		frmLogin.setBounds(500, 500, 424, 260);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setBounds(178, 86, 99, 22);
-		frame.getContentPane().add(textArea);
+		textArea.setBounds(188, 124, 156, 22);
+		frmLogin.getContentPane().add(textArea);
 		
-		JLabel lblPassword = new JLabel("PASSWORD");
-		lblPassword.setBounds(63, 130, 70, 14);
-		frame.getContentPane().add(lblPassword);
+		JLabel lblPassword = new JLabel("PASSWORD:");
+		lblPassword.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblPassword.setBounds(75, 126, 82, 20);
+		frmLogin.getContentPane().add(lblPassword);
 		
 		textField = new JTextField();
-		textField.setBounds(178, 127, 99, 20);
-		frame.getContentPane().add(textField);
+		textField.setBounds(188, 83, 156, 20);
+		frmLogin.getContentPane().add(textField);
 		textField.setColumns(10);
 		
 		JButton btnLogin = new JButton("LOGIN");
@@ -107,12 +114,13 @@ public class Login {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLogin.setBounds(116, 187, 89, 23);
-		frame.getContentPane().add(btnLogin);
+		btnLogin.setBounds(154, 180, 99, 30);
+		frmLogin.getContentPane().add(btnLogin);
 		
 		JLabel lblLogin = new JLabel("LOGIN ");
-		lblLogin.setFont(new Font("Stencil", Font.BOLD, 15));
-		lblLogin.setBounds(138, 11, 99, 40);
-		frame.getContentPane().add(lblLogin);
+		lblLogin.setHorizontalAlignment(SwingConstants.CENTER);
+		lblLogin.setFont(new Font("Tahoma", Font.BOLD, 13));
+		lblLogin.setBounds(154, 11, 99, 40);
+		frmLogin.getContentPane().add(lblLogin);
 	}
 }

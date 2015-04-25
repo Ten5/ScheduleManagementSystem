@@ -5,10 +5,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
 
 public class TeacherMenu {
 
-	private JFrame frame;
+	private JFrame frmMenu;
 
 	/**
 	 * Launch the application.
@@ -18,7 +21,7 @@ public class TeacherMenu {
 			public void run() {
 				try {
 					TeacherMenu window = new TeacherMenu();
-					window.frame.setVisible(true);
+					window.frmMenu.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,22 +40,27 @@ public class TeacherMenu {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmMenu = new JFrame();
+		frmMenu.setTitle("Menu");
+		frmMenu.setResizable(false);
+		frmMenu.getContentPane().setBackground(new Color(255, 250, 250));
+		frmMenu.setBounds(100, 100, 450, 300);
+		frmMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmMenu.getContentPane().setLayout(null);
 		
-		JLabel label = new JLabel("WELCOME ");
-		label.setBounds(134, 38, 127, 27);
-		frame.getContentPane().add(label);
+		JLabel lblWelcome = new JLabel("WELCOME:");
+		lblWelcome.setFont(new Font("Tahoma", Font.BOLD, 11));
+		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcome.setBounds(153, 41, 127, 27);
+		frmMenu.getContentPane().add(lblWelcome);
 		
 		JButton button = new JButton("View Atendance Report");
-		button.setBounds(79, 148, 229, 23);
-		frame.getContentPane().add(button);
+		button.setBounds(102, 190, 229, 40);
+		frmMenu.getContentPane().add(button);
 		
 		JButton button_1 = new JButton("Record Attendance");
-		button_1.setBounds(79, 99, 229, 23);
-		frame.getContentPane().add(button_1);
+		button_1.setBounds(102, 109, 229, 40);
+		frmMenu.getContentPane().add(button_1);
 		
 		
 	}
