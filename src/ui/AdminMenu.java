@@ -56,20 +56,20 @@ public class AdminMenu {
 		lblWelcomeAdmin.setBounds(159, 29, 116, 23);
 		frmMenu.getContentPane().add(lblWelcomeAdmin);
 		
-		JButton btnAddupdatedeleteStudentDetails = new JButton("Add/Update/Delete Student Details");
+		JButton btnAddupdatedeleteStudentDetails = new JButton("Student Corner");
 		btnAddupdatedeleteStudentDetails.setBounds(102, 81, 229, 33);
 		frmMenu.getContentPane().add(btnAddupdatedeleteStudentDetails);
 		
-		JButton button = new JButton("Add/Update/Delete Teacher Details");
-		button.addActionListener(new ActionListener() {
+		JButton btnTeacherCorner = new JButton("Teacher Corner");
+		btnTeacherCorner.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		button.setBounds(102, 143, 229, 33);
-		frmMenu.getContentPane().add(button);
+		btnTeacherCorner.setBounds(102, 143, 229, 33);
+		frmMenu.getContentPane().add(btnTeacherCorner);
 		
-		JButton button_1 = new JButton("Add/Update/Delete Subject Details");
-		button_1.setBounds(102, 205, 229, 33);
-		frmMenu.getContentPane().add(button_1);
+		JButton btnSubjectCorner = new JButton("Subject Corner");
+		btnSubjectCorner.setBounds(102, 205, 229, 33);
+		frmMenu.getContentPane().add(btnSubjectCorner);
 	}
 }

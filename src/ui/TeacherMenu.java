@@ -8,6 +8,10 @@ import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class TeacherMenu {
 
@@ -47,22 +51,39 @@ public class TeacherMenu {
 		frmMenu.setBounds(100, 100, 450, 300);
 		frmMenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMenu.getContentPane().setLayout(null);
-		
+
 		JLabel lblWelcome = new JLabel("WELCOME:");
 		lblWelcome.setFont(new Font("Tahoma", Font.BOLD, 11));
 		lblWelcome.setHorizontalAlignment(SwingConstants.CENTER);
 		lblWelcome.setBounds(153, 41, 127, 27);
 		frmMenu.getContentPane().add(lblWelcome);
-		
+
 		JButton button = new JButton("View Atendance Report");
+		button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
 		button.setBounds(102, 190, 229, 40);
 		frmMenu.getContentPane().add(button);
-		
+
 		JButton button_1 = new JButton("Record Attendance");
+		button_1.addMouseListener(new MouseAdapter() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				AttendanceTable at=new AttendanceTable();
+			}
+		});
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		button_1.setBounds(102, 109, 229, 40);
 		frmMenu.getContentPane().add(button_1);
-		
-		
+
+
 	}
 
 }

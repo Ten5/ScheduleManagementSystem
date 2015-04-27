@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -22,6 +23,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
+import oracle.jdbc.OracleTypes;
+
 public class ViewAttendanceReport {
 
 	private JFrame frmStudentConsolidateReport;
@@ -30,6 +33,7 @@ public class ViewAttendanceReport {
 	private JLabel lblCourse_1;
 	private JLabel lblSemester;
 	static Statement st;
+	static Connection con;
 
 	/**
 	 * Launch the application.
@@ -44,7 +48,7 @@ public class ViewAttendanceReport {
 		}
 
 		try {
-			Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL","scott","tiger");
+			con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:ORCL","scott","tiger");
 			st=con.createStatement();
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
@@ -152,9 +156,17 @@ public class ViewAttendanceReport {
 			public void mouseClicked(MouseEvent arg0) {
 
 				try {
-					st.executeQuery("select uroll,period_id,status,adate from attend");
-
-					ResultSet rs=st.getResultSet();
+					//st.executeQuery("select uroll,period_id,status,adate from attend");
+					st.execute("create or replace procedure attendance (catCur OUT SYS_REFCURSOR) is begin open catcur for select uroll,period_id,status,adate from attend ;end;");
+					
+					//CallableStatement pc = con.prepareCall ("begin attendance; end;");
+					
+					CallableStatement pc = con.prepareCall ("{call attendance(?)}");
+					pc.registerOutParameter(1, OracleTypes.CURSOR);
+				     pc.execute ();
+				      
+				      
+					ResultSet rs=(ResultSet)pc.getObject(1);
 					if(rs!=null) {
 						while(rs.next()) {
 							/*Object row[][]=new Object[1][4];
@@ -181,5 +193,6 @@ public class ViewAttendanceReport {
 		});		
 		btnSubmit.setBounds(391, 127, 112, 31);
 		frmStudentConsolidateReport.getContentPane().add(btnSubmit);
+		frmStudentConsolidateReport.setVisible(true);
 	}
 }
